@@ -15,77 +15,75 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 
 ## 🔹 Implementation Steps
 
-### 1. Preparing the Environment
-- Installed VMware and required ISOs (Windows Server 2019, Windows 10).  
-- Created VM for **Primary Domain Controller (PDC)** with 4 GB RAM and static IP `192.168.1.2`.  
-- Installed **VMware Tools** for better performance and resolution.  
+### 1. Domain Controller Setup
+- Installed and promoted a Windows Server 2019 VM to **Domain Controller**.  
+- Created a new forest: `Project.local`.  
+- Configured static IP and DSRM password.  
 
-![Domain Setup](screenshots/domain_setup.png)
-
----
-
-### 2. Domain Controller Configuration
-- Promoted server to **Domain Controller**.  
-- Created new forest: `Project.local`.  
-- Configured DSRM password and verified promotion.  
+![Domain Controller](screenshots/domain_controller.png)
 
 ---
 
-### 3. Organizational Units & Users
+### 2. Organizational Units & User Management
 - Created OUs: **HR**, **IT**, **Sales**.  
 - Automated user creation with **PowerShell + CSV**.  
-- Created department security groups and added users.  
 
-![OU and Users](screenshots/ou_users.png)
+![PowerShell User Import](screenshots/powershell_user_import.png)  
+![Sales OU with Users](screenshots/ou_sales_users.png)
 
 ---
 
-### 4. Group Policy Objects (GPOs)
+### 3. Group Policy Objects (GPOs)
 - Created GPO to **disable Control Panel** for Sales users.  
-- Tested with a Windows 10 client:  
-  - IT user → full access  
-  - Sales user → Control Panel restricted  
+- Verified enforcement by testing login with different users.  
 
-![GPO Sales Restriction](screenshots/gpo_sales.png)
-
----
-
-### 5. File Sharing & FSRM
-- Configured **shared folders** for each department with NTFS permissions.  
-- Installed **File Server Resource Manager (FSRM)**.  
-- Applied quotas (e.g., Sales folder limited to 2GB with warnings).  
-- Configured file screening to block media files.  
-
-![Shared Folders](screenshots/shared_folders.png)
+![GPO Restriction](screenshots/gpo_restriction.png)  
+![GPO Restriction Test](screenshots/gpo_restriction_test.png)
 
 ---
 
-### 6. DHCP Configuration & Failover
+### 4. File Sharing & FSRM
+- Configured **departmental shared folders** with NTFS permissions.  
+- Installed **FSRM** to apply quotas and file screening.  
+
+![Shared Folders](screenshots/shared_folders.png)  
+![Quota](screenshots/quota_sales.png)  
+![Screening](screenshots/screening.png)
+
+---
+
+### 5. DHCP & Failover
 - Configured DHCP scope: `192.168.1.50 – 192.168.1.200`.  
-- Added gateway `192.168.1.1` and DNS `192.168.1.2`.  
-- Created a second server (**DHCP2**) for failover.  
-- Tested → clients successfully received IPs when PDC DHCP was offline.  
+- Set up **failover** with a secondary DHCP server.  
+- Tested IP assignment during PDC downtime.  
 
+![DHCP Scope](screenshots/dhcp_scope.png)  
 ![DHCP Failover](screenshots/dhcp_failover.png)
 
 ---
 
-### 7. Windows Deployment Services (WDS)
-- Installed and configured **WDS**.  
-- Added boot/install images from Windows 10 ISO.  
-- Created **autounattend.xml** with WSIM for automated deployment.  
-- Tested → new client VM installed Windows 10 and joined domain automatically.  
+### 6. Windows Deployment Services (WDS)
+- Installed and configured **WDS** to automate client OS deployments.  
+- Added boot/install images and an **unattended XML file** for automation.  
+- Tested client boot into PXE → automated domain join.  
 
-![WDS Deployment](screenshots/wds_deployment.png)
+![WDS Boot Image](screenshots/wds_boot_image.png)  
+![WDS Unattend](screenshots/wds_unattend.png)  
+![WDS Client Boot](screenshots/wds_client_boot.png)  
+![WDS Client Loading](screenshots/wds_client_loading.png)
 
 ---
 
-### 8. Backup & Restore
-- Installed **Windows Server Backup**.  
-- Configured backup to secondary DC.  
-- Successfully tested backup and restore by deleting/restoring files.  
+### 7. Backup & Restore
+- Configured **Windows Server Backup** on a secondary DC.  
+- Performed backup and tested file restore.  
 
-![Backup](screenshots/backup.png)
+Before deletion:  
+![Backup Before](screenshots/backup_before.png)  
+
+After deletion + restore:  
+![Backup Completed](screenshots/backup_completed.png)  
+![Backup After](screenshots/backup_after.png)
 
 ---
 
@@ -93,20 +91,20 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 This project successfully simulated a small enterprise IT infrastructure.  
 Key services implemented:  
 - Active Directory Domain Services (AD DS)  
-- Organizational Units & User Management  
+- Organizational Units & User Management (PowerShell automation)  
 - Group Policy Objects (GPOs)  
-- File Server Resource Manager (FSRM)  
+- File Server Resource Manager (FSRM: quotas & screening)  
 - DHCP with Failover  
 - Windows Deployment Services (WDS)  
-- Backup & Restore  
+- Windows Server Backup & Restore  
 
 ---
 
 ## 🔹 Key Learnings
-- Gained practical experience with **enterprise-grade IT services**.  
-- Learned how **automation** (PowerShell, WDS) simplifies administration.  
-- Understood the importance of **redundancy** (DHCP failover).  
-- Practiced **real-world security & access control** via GPOs and FSRM.  
+- Hands-on practice with **enterprise IT services**.  
+- Automation via **PowerShell & WDS**.  
+- Implementing **redundancy & resilience** (DHCP failover, backup).  
+- Enforcing **policies & access control** through GPOs and FSRM.  
 
 ---
 
@@ -119,7 +117,7 @@ Key services implemented:
 
 ## 🔹 Author
 👤 **Ahmed Mokhless**  
-🔗 [LinkedIn](https://www.linkedin.com/)  
+🔗 [LinkedIn](https://www.linkedin.com/in/ahmed-mokhless/)  
 🔗 [GitHub](https://github.com/)  
 
 ---
