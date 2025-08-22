@@ -28,8 +28,8 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Created OUs: **HR**, **IT**, **Sales**.  
 - Automated user creation with **PowerShell + CSV**.  
 
-![PowerShell User Import](screenshots/powershell_user_import.png)  
-![Sales OU with Users](screenshots/ou_sales_users.png)
+![PowerShell User Import](Screenshots/powershell_user_import.png)  
+![Sales OU with Users](Screenshots/ou_sales_users.png)
 
 ---
 
@@ -37,8 +37,8 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Created GPO to **disable Control Panel** for Sales users.  
 - Verified enforcement by testing login with different users.  
 
-![GPO Restriction](screenshots/gpo_restriction.png)  
-![GPO Restriction Test](screenshots/gpo_restriction_test.png)
+![GPO Restriction](Screenshots/gpo_restriction.png)  
+![GPO Restriction Test](Screenshots/gpo_restriction_test.png)
 
 ---
 
@@ -46,9 +46,9 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Configured **departmental shared folders** with NTFS permissions.  
 - Installed **FSRM** to apply quotas and file screening.  
 
-![Shared Folders](screenshots/shared_folders.png)  
-![Quota](screenshots/quota_sales.png)  
-![Screening](screenshots/screening.png)
+![Shared Folders](Screenshots/shared_folders.png)  
+![Quota](Screenshots/quota_sales.png)  
+![Screening](Screenshots/screening.png)
 
 ---
 
@@ -57,8 +57,8 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Set up **failover** with a secondary DHCP server.  
 - Tested IP assignment during PDC downtime.  
 
-![DHCP Scope](screenshots/dhcp_scope.png)  
-![DHCP Failover](screenshots/dhcp_failover.png)
+![DHCP Scope](Screenshots/dhcp_scope.png)  
+![DHCP Failover](Screenshots/dhcp_failover.png)
 
 ---
 
@@ -67,10 +67,10 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Added boot/install images and an **unattended XML file** for automation.  
 - Tested client boot into PXE → automated domain join.  
 
-![WDS Boot Image](screenshots/wds_boot_image.png)  
-![WDS Unattend](screenshots/wds_unattend.png)  
-![WDS Client Boot](screenshots/wds_client_boot.png)  
-![WDS Client Loading](screenshots/wds_client_loading.png)
+![WDS Boot Image](Screenshots/wds_boot_image.png)  
+![WDS Unattend](Screenshots/wds_unattend.png)  
+![WDS Client Boot](Screenshots/wds_client_boot.png)  
+![WDS Client Loading](Screenshots/wds_client_loading.png)
 
 ---
 
@@ -79,11 +79,11 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Performed backup and tested file restore.  
 
 Before deletion:  
-![Backup Before](screenshots/backup_before.png)  
+![Backup Before](Screenshots/backup_before.png)  
 
 After deletion + restore:  
-![Backup Completed](screenshots/backup_completed.png)  
-![Backup After](screenshots/backup_after.png)
+![Backup Completed](Screenshots/backup_completed.png)  
+![Backup After](Screenshots/backup_after.png)
 
 ---
 
