@@ -20,7 +20,7 @@ This repository documents my **Active Directory (AD) home lab project**, where I
 - Created a new forest: `Project.local`.  
 - Configured static IP and DSRM password.  
 
-![Domain Controller](screenshots/domain_controller.png)
+![Domain Controller](Screenshots/domain_controller.png)
 
 ---
 
